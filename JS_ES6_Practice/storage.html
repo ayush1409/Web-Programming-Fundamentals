@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>LocalStorageConcept</title>
+		<script type="text/javascript">
+			//  demonstrating the concept of local storage
+
+			if(!localStorage.getItem('counter'))
+				localStorage.setItem('counter',0)
+
+			document.addEventListener("DOMContentLoaded", function(){
+				document.querySelector('#counter').innerHTML = localStorage.getItem('counter') ;
+
+				document.querySelector('button').onclick = () => {
+					let counter = localStorage.getItem('counter') ;
+					counter++ ;
+
+					document.querySelector('#counter').innerHTML = counter ;
+					localStorage.setItem('counter', counter) ;
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<h1 id='counter'></h1>
+		<button type="button" >add 1</button>
+	</body>
+</html>
