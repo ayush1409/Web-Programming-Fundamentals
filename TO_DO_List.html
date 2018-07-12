@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>To Do list</title>
+		<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", () => {
+
+			document.querySelector('#new_task').onsubmit = () => {
+				const li = document.createElement('li') ;
+				li.innerHTML = document.querySelector('#task').value ;
+
+				document.querySelector('#submit').disabled = true ;
+
+				document.querySelector('#task').onkeyup = () => {
+					if(document.querySelector('#task').value.length > 0)
+						document.querySelector('#submit').disabled = false ;
+					else {
+						document.querySelector('#submit').disabled = true ;
+					}
+				}
+				if(document.querySelector('#submit').disabled)
+					document.querySelector('#tasks').append(li) ;
+
+				document.querySelector('#task').value = '' ;
+
+				return false ;
+			} ;
+		}) ;
+		</script>
+	</head>
+	<body>
+		<ul id="tasks">
+		</ul>
+		<form id="new_task">
+			<input id="task" autocomplete="off" autofocus placeholder="New Task"  type="text">
+			<input id="submit" type="submit">
+		</form>
+	</body>
+</html>
